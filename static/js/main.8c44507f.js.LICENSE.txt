@@ -76,3 +76,5 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+//! Зверни увагу на редюсер видалення, чи не мутує він стейт (властивості еррор та ісЛоадінг можуть стератися...)
