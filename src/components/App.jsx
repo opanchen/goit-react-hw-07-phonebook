@@ -16,8 +16,7 @@ export const App = () => {
 
   useEffect(() => {
 
-    const promise =  dispatch(fetchContacts());
-    return () => promise.abort();
+    dispatch(fetchContacts());
     
   }, [dispatch]);
 
