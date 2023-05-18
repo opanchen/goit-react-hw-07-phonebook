@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { nanoid } from 'nanoid'
-import { add } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from "redux/operations";
+import { nanoid } from 'nanoid';
+import { toast } from "react-toastify";
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -12,7 +13,7 @@ export const ContactForm = () => {
 
     const dispatch = useDispatch();
     
-    const contacs = useSelector(getContacts); 
+    const contacs = useSelector(selectContacts); 
 
     const nameInputId = nanoid();
     const numberInputId = nanoid();
@@ -41,11 +42,12 @@ export const ContactForm = () => {
         e.preventDefault();
         
         if (checkContactName(name)) {
-            alert(`${name} is already in contacts.`)
+            toast.error(`${name} is already in contacts.`)
             return
         } // we leave to user an opportunity to change name without default reset
 
-        dispatch(add(name, number))
+        dispatch(addContact({name, number}))
+          
         reset();
     }
 
