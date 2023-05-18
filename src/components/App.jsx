@@ -15,7 +15,10 @@ export const App = () => {
   
 
   useEffect(() => {
-    dispatch(fetchContacts());
+
+    const promise =  dispatch(fetchContacts());
+    return () => promise.abort();
+    
   }, [dispatch]);
 
   return (

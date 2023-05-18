@@ -87,7 +87,17 @@ export const ContactForm = () => {
         />
         </label>
 
+        <div className={css['buttons-bar']}>
         <button type="submit">Add contact</button>
+        <button type="button" 
+            onClick={reset}
+            disabled={!name && !number}
+            className={!name && !number ? css.disabled : undefined}
+            >
+            Clear
+        </button>
+        </div>
+
         </form>
     )
 }
